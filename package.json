@@ -1,0 +1,33 @@
+{
+  "name": "claude-with-opencode",
+  "description": "Run Claude Code on the models you connected in OpenCode (Zen, Go and other API-key providers)",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "claude-with-opencode": "dist/cli.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "20.19.43",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test:unit": "npm run build && node test/run-unit.mjs",
+    "test:claude": "npm run build && node test/smoke-claude.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "claude-code",
+    "opencode",
+    "opencode-zen",
+    "opencode-go",
+    "anthropic",
+    "proxy"
+  ]
+}
