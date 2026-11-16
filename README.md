@@ -58,12 +58,8 @@ Gemini's native API, Vertex, Bedrock and Azure are not supported yet. Those mode
 
 **2. Install**
 
-The package is not published to npm. Install it from this folder:
-
 ```bash
-npm install
-npm run build
-npm install -g .
+npm install -g claude-with-opencode
 ```
 
 **3. Run**
