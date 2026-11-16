@@ -114,6 +114,25 @@ Subagents that ask for `opus`, `sonnet` or `haiku` get the matching slot.
 
 Defaults are resolved in this order, first match wins: `--oc-*` options, `claude --model provider/model`, `CWO_*` environment variables, then the config file.
 
+### Reasoning effort
+
+By default, Claude Code's own effort setting (for example `/effort high`) is passed on to OpenCode models. The wrapper only sends a level the model lists in the catalog: `max` becomes `xhigh` when that is all the model has, and an unsupported level is dropped, so the provider's default applies. Models without reasoning ignore it.
+
+To force one level for every OpenCode model, whatever Claude Code asks for:
+
+```bash
+claude-with-opencode --oc-effort high
+CWO_EFFORT=high claude-with-opencode
+```
+
+or in `~/.config/claude-with-opencode/config.json`:
+
+```json
+{ "effort": "high" }
+```
+
+Precedence: `--oc-effort`, then `CWO_EFFORT`, then the config file. Run with `CWO_LOG_LEVEL=debug` to see the effort Claude Code requested for each request.
+
 ### OpenCode only
 
 `--oc-only` (or `"opencodeOnly": true`, or `CWO_OPENCODE_ONLY=1`) leaves Claude out entirely. It needs no Claude login and fills every slot with an OpenCode model:
